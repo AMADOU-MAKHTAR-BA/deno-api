@@ -16,14 +16,6 @@ const myCharacters: TypeMyCharacters[] = [
 // @route GET /characters
 const getAllCharacters = (ctx: Context) => {
   const { response } = ctx;
-  if (!myCharacters) {
-    response.status = 404;
-    response.body = {
-      success: false,
-      msg: "la liste de vos personnages est introuvable",
-    };
-    return;
-  }
   response.status = 200;
   response.body = {
     success: true,
@@ -32,7 +24,7 @@ const getAllCharacters = (ctx: Context) => {
 };
 
 // @desc Get a cahracter
-//@route GET /characters/:id
+// @route GET /characters/:id
 const getCharacter = (ctx: RouterContext<"/characters/:id">) => {
   const { params, response } = ctx;
   const CharacterId = params.id;
